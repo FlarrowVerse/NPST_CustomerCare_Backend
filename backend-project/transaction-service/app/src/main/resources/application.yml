@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: transaction-service
+  
+  webflux:
+    base-path: /api
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/payments
+    username: postgres
+    password: Password@2nd
+
+  sql:
+    init:
+      mode: never
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+
+
+logging:
+  level:
+    org.springframework.r2dbc: INFO
