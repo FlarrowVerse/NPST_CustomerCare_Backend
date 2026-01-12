@@ -1,0 +1,749 @@
+{
+	"info": {
+		"_postman_id": "7cd44ff5-9eb4-4dc0-9085-23d9ff541dc4",
+		"name": "NPST_Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10265210"
+	},
+	"item": [
+		{
+			"name": "AGENT",
+			"item": [
+				{
+					"name": "Get All Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/transactions",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction By Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/transactions?status={{status}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refunds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/refunds",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Get raw response body as text\r",
+									"const token = pm.response.text().trim();\r",
+									"\r",
+									"// Set it as an environment variable\r",
+									"pm.environment.set(\"auth_token\", token);\r",
+									"\r",
+									"// Optional: log to Postman console for verification\r",
+									"console.log(\"Auth token set:\", token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{authURL}}?username=agent&password=agent123",
+							"host": [
+								"{{authURL}}"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "agent"
+								},
+								{
+									"key": "password",
+									"value": "agent123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refund",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/TXN001/refund",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"TXN001",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{analyticsURL}}/summary",
+							"host": [
+								"{{analyticsURL}}"
+							],
+							"path": [
+								"summary"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{auth_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "SUPERVISOR",
+			"item": [
+				{
+					"name": "Refunds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/refunds",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}",
+							"host": [
+								"{{baseURL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction By Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}?status={{status}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction By Merchant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}?paymentMethod=Credit%20Card",
+							"host": [
+								"{{baseURL}}"
+							],
+							"query": [
+								{
+									"key": "merchant",
+									"value": "Amazon",
+									"disabled": true
+								},
+								{
+									"key": "paymentMethod",
+									"value": "Credit%20Card"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Get raw response body as text\r",
+									"const token = pm.response.text().trim();\r",
+									"\r",
+									"// Set it as an environment variable\r",
+									"pm.environment.set(\"auth_token\", token);\r",
+									"\r",
+									"// Optional: log to Postman console for verification\r",
+									"console.log(\"Auth token set:\", token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{authURL}}?username=supervisor&password=super123",
+							"host": [
+								"{{authURL}}"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "supervisor"
+								},
+								{
+									"key": "password",
+									"value": "super123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refund",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/TXN001/refund",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"TXN001",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analytics Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{analyticsURL}}/daily",
+							"host": [
+								"{{analyticsURL}}"
+							],
+							"path": [
+								"daily"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analytics Refund Analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{analyticsURL}}/refunds",
+							"host": [
+								"{{analyticsURL}}"
+							],
+							"path": [
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analytics Daily Trends",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{analyticsURL}}/daily?days=2",
+							"host": [
+								"{{analyticsURL}}"
+							],
+							"path": [
+								"daily"
+							],
+							"query": [
+								{
+									"key": "days",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report Download",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{reportsURL}}/download?reportType=DAILY&start=2026-01-01T00:00:00Z&end=2026-01-12T23:59:59Z",
+							"host": [
+								"{{reportsURL}}"
+							],
+							"path": [
+								"download"
+							],
+							"query": [
+								{
+									"key": "reportType",
+									"value": "DAILY"
+								},
+								{
+									"key": "start",
+									"value": "2026-01-01T00:00:00Z"
+								},
+								{
+									"key": "end",
+									"value": "2026-01-12T23:59:59Z"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{auth_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "Refunds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/refunds",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction By Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/?status={{status}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{status}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Get raw response body as text\r",
+									"const token = pm.response.text().trim();\r",
+									"\r",
+									"// Set it as an environment variable\r",
+									"pm.environment.set(\"auth_token\", token);\r",
+									"\r",
+									"// Optional: log to Postman console for verification\r",
+									"console.log(\"Auth token set:\", token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{authURL}}?username=admin&password=admin123",
+							"host": [
+								"{{authURL}}"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin"
+								},
+								{
+									"key": "password",
+									"value": "admin123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analytics Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{analyticsURL}}/summary",
+							"host": [
+								"{{analyticsURL}}"
+							],
+							"path": [
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analytics Refund Analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{analyticsURL}}/refunds",
+							"host": [
+								"{{analyticsURL}}"
+							],
+							"path": [
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analytics Daily Trends",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{analyticsURL}}/daily?days=2",
+							"host": [
+								"{{analyticsURL}}"
+							],
+							"path": [
+								"daily"
+							],
+							"query": [
+								{
+									"key": "days",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{auth_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "HealthCheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/health",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
