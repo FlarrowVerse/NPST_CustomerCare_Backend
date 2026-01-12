@@ -45,7 +45,7 @@ public class AuthController {
 
         return Jwts.builder()
                 .setSubject(username)
-                .claim("roles", List.of("ROLE_" + user.role()))
+                .claim("roles", List.of(user.role()))
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 3600_000))
                 .signWith(key, SignatureAlgorithm.HS256)

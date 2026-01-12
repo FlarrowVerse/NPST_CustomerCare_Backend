@@ -19,7 +19,7 @@ public class GatewaySecurityConfig {
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers("/auth/**").permitAll()
-                        .pathMatchers("/api/transactions/**").authenticated()
+                        .pathMatchers("/api/**").authenticated()
                         .anyExchange().denyAll()
                 )
                 .oauth2ResourceServer(oauth2 ->
@@ -30,5 +30,3 @@ public class GatewaySecurityConfig {
                 .build();
     }
 }
-
-// .hasAnyRole("AGENT", "SUPERVISOR", "ADMIN")

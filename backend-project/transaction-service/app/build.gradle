@@ -24,6 +24,12 @@ dependencies {
     // Security (will configure later)
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
+    // 🔑 REQUIRED FOR JWT SUPPORT
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
+    // JWT (JOSE)
+    implementation 'org.springframework.security:spring-security-oauth2-jose'
+
     // PostgreSQL Reactive
     implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
     runtimeOnly 'org.postgresql:postgresql'
