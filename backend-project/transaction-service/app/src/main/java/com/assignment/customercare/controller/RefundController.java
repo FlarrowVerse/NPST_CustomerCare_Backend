@@ -12,12 +12,16 @@ import com.assignment.customercare.dto.RefundRequest;
 import com.assignment.customercare.model.Transaction;
 import com.assignment.customercare.service.RefundService;
 
-
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/transactions")
+@Tag(
+    name = "Refund",
+    description = "Part of Transactions, but used for Refund only"
+)
 public class RefundController {
     
     private final RefundService refundService;

@@ -18,11 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.assignment.customercare.dto.ReportType;
 import com.assignment.customercare.service.ReportService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/reports")
+@Tag(
+    name = "Reports",
+    description = "Downloadable CSV reports for transactions"
+)
 public class ReportController {
     
     private final ReportService reportService;

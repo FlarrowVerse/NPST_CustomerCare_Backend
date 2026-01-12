@@ -39,6 +39,9 @@ The service uses JWT-based authentication with role-based access control.
 
 Roles are extracted from the JWT roles claim and converted to Spring Security authorities.
 
+### NOTE
+For the purposes of a demo, three users were created in three different roles under the `api-gateway` application. But these can be easily removed and replaced with OAuth2 in production grade applications. Due to time constraints I have opted out of using that here.
+
 ## 🔁 Core Features
 ### 1. Transactions
 

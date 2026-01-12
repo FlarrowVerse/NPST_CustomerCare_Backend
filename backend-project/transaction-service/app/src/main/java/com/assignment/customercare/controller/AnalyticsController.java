@@ -11,11 +11,16 @@ import com.assignment.customercare.dto.RefundAnalytics;
 import com.assignment.customercare.dto.TransactionSummary;
 import com.assignment.customercare.service.AnalyticsService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/analytics")
+@Tag(
+    name = "Analytics Endpoints",
+    description = "Transaction analytics APIs (summary, daily trends, refund statistics)"
+)
 public class AnalyticsController {
     
     private final AnalyticsService analyticsService;

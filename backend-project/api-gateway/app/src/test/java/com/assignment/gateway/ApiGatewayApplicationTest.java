@@ -4,11 +4,11 @@
 package com.assignment.gateway;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class ApiGatewayApplicationTest {
     @Test void appHasAGreeting() {
-        ApiGatewayApplication classUnderTest = new ApiGatewayApplication();
+        // ApiGatewayApplication classUnderTest = new ApiGatewayApplication();
         // assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 }

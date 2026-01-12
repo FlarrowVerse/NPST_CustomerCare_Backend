@@ -4,11 +4,10 @@
 package com.assignment.customercare;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TransactionServiceApplicationTest {
     @Test void appHasAGreeting() {
-        TransactionServiceApplication classUnderTest = new TransactionServiceApplication();
+        // TransactionServiceApplication classUnderTest = new TransactionServiceApplication();
         // assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 }

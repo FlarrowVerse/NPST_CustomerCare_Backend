@@ -6,6 +6,22 @@ package com.assignment.customercare;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+
+@OpenAPIDefinition(
+    info = @Info(
+        title = "Customer Care Dashboard Backend for Payment Gateway Transactions",
+        description = "Reactive transaction processing system with RBAC, analytics, refunds, and reporting",
+        version = "1.0.0",
+        contact = @Contact(
+            name = "Archisman Chakraborty",
+            email = "archisman1999@gmail.com"
+        )
+    )
+)
+
 @SpringBootApplication
 public class TransactionServiceApplication {
 

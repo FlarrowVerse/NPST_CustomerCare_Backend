@@ -16,11 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.assignment.customercare.model.Transaction;
 import com.assignment.customercare.service.TransactionService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/transactions")
+@Tag(
+    name = "Transactions",
+    description = "Transaction creation, retrieval, filtering, refunds, and live feed APIs"
+)
 public class TransactionController {
 
     private final TransactionService service;
